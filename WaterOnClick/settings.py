@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'rest_framework',
     'dealerstock.apps.DealerstockConfig',
+    'createOrder.apps.CreateorderConfig',
     'user.apps.UserConfig',
     'dealer.apps.DealerConfig',
     'django.contrib.admin',

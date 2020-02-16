@@ -11,5 +11,5 @@ class userInfoTable(models.Model):
 #uuid.uuid4().hex[:6].upper())
 
 
-    refercode=models.CharField(max_length=100,blank=True)
+    promocode=models.CharField(max_length=100,blank=True)
     date_created=models.DateTimeField(auto_now=True)

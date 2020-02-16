@@ -3,4 +3,4 @@ from rest_framework import serializers
 class userInfoSerialiser(serializers.ModelSerializer):
     class Meta:
         model=userInfoTable
-        fields=['id','name','address','email','password','refercode','date_created']
+        fields=['id','name','address','email','password','promocode','date_created']
