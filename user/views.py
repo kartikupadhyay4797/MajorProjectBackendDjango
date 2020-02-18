@@ -5,9 +5,19 @@ from django.http import HttpResponse
 import smtplib
 import os
 
+#class loginUserViewSet(viewsets.ModelViewSet):
+    #queryset=userInfoTable.objects.filter(email=request.GET.get('email', ''), password=request.GET.get('password', ''))
+##    queryset = userInfoTable.objects.filter(email=self)
+  #  serializer_class=userInfoSerialiser
+
+
 class userViewSet(viewsets.ModelViewSet):
     queryset = userInfoTable.objects.all().order_by('-date_created')
     serializer_class = userInfoSerialiser
+
+    #def login(self):
+     #   user=userInfoTable.objects.get(email=self.kwargs['email'],password=self.kwargs['password'])
+      #  return user
 
     def perform_create(self, serializer):
         response=super(userViewSet, self).perform_create(serializer)

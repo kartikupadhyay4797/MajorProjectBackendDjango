@@ -4,5 +4,5 @@ from django.conf.urls import include
 from . import views
 
 urlpatterns = [
-    path("",views.demo)
+    #path("r'^/login?P<email>&P<password>$'",views.userViewSet.login)
 ]
