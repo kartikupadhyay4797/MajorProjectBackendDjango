@@ -20,7 +20,7 @@ class userViewSet(viewsets.ModelViewSet):
       #  return user
 
     def perform_create(self, serializer):
-        response=super(userViewSet, self).perform_create(serializer)
+        #response=super(userViewSet, self).perform_create(serializer)
         #data=self.request.data
         data=serializer.data
         email=data['email']
@@ -49,8 +49,9 @@ class userViewSet(viewsets.ModelViewSet):
         except Exception as e:
             # Print any error messages to stdout
             print(e)
+            return HttpResponse("{'msg':'error occurred try again with valid details'}")
         finally:
             server.quit()
         # here may be placed additional operations for
         # extracting id of the object and using reverse()
-        return response
+        return HttpResponse("{'msg':'registered successfully'}")
