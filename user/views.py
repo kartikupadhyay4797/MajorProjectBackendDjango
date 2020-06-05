@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework.response import Response
 from .serializers import userInfoSerialiser
 from .models import userInfoTable
 from django.http import HttpResponse
@@ -14,13 +15,13 @@ import os
 class userViewSet(viewsets.ModelViewSet):
     queryset = userInfoTable.objects.all().order_by('-date_created')
     serializer_class = userInfoSerialiser
-
+    #response=Response("")
     #def login(self):
      #   user=userInfoTable.objects.get(email=self.kwargs['email'],password=self.kwargs['password'])
       #  return user
 
     def perform_create(self, serializer):
-        #response=super(userViewSet, self).perform_create(serializer)
+        response=super(userViewSet, self).perform_create(serializer)
         #data=self.request.data
         data=serializer.data
         email=data['email']
@@ -49,9 +50,8 @@ class userViewSet(viewsets.ModelViewSet):
         except Exception as e:
             # Print any error messages to stdout
             print(e)
-            return HttpResponse("{'msg':'error occurred try again with valid details'}")
         finally:
             server.quit()
         # here may be placed additional operations for
         # extracting id of the object and using reverse()
-        return HttpResponse("{'msg':'registered successfully'}")
+        return response
